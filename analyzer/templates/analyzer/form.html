@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top left, #7b4397, #dc2430);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            flex: 1 1 500px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            min-width: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+            color: #dc2430;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        textarea, input {
+            padding: 14px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            resize: vertical;
+        }
+
+        button {
+            background: #dc2430;
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #a71d2a;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            background: #f1f1f1;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-type {
+            font-size: 20px;
+            font-weight: 600;
+            color: #dc2430;
+        }
+
+        .category {
+            font-size: 18px;
+            color: #444;
+            margin-top: 8px;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .download-button {
+            background: #0d47a1;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background: #1565c0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">
+            <div>
+                <h1>Tweet Analyzer</h1>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Analyze Tweet</button>
+                </form>
+
+                {% if result_type %}
+                    <div class="result-box">
+                        <div class="result-type">Type: {{ result_type }}</div>
+                        {% if category %}
+                            <div class="category">Category: {{ category }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="box">
+            <div>
+                <h2>Analysis History</h2>
+
+                {% if recent_results %}
+                    <div>
+                        <ul>
+                            {% for item in recent_results %}
+                                <li>
+                                    <strong>{{ item.result_type }}</strong> -
+                                    {{ item.category|default:"None" }} -
+                                    "{{ item.tweet_text|truncatechars:50 }}"
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>No analysis history yet.</p>
+                {% endif %}
+            </div>
+
+            <div style="text-align:center;">
+                <a href="{% url 'download_csv' %}" class="download-button">Download CSV</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
