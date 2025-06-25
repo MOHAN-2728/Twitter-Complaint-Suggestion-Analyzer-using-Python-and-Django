@@ -31,12 +31,12 @@ A web-based Tweet Analyzer built with Django and Python that classifies tweets m
 ## 📸 Screenshots
 
 ### Home Page
-![Image](Home page.png)
+![Image](output/complaint_output.png)
 
 ---
 
 ### Tweet Input and Result Page
-![Image](https://github.com/user-attachments/assets/2c2de3fa-a008-4ae1-86d1-8c06b9f16f6c)
+![Image]([https://github.com/user-attachments/assets/2c2de3fa-a008-4ae1-86d1-8c06b9f16f6c](https://github.com/MOHAN-2728/Twitter-Complaint-Suggestion-Analyzer-using-Python-and-Django/blob/df7e5c8cb39d6c8dce717c7f6dea4bcb02b6686a/output/complaint_output.png))
 
 ---
 
