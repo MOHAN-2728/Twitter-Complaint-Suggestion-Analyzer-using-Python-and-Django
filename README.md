@@ -27,3 +27,31 @@ A web-based Tweet Analyzer built with Django and Python that classifies tweets m
 - Frontend: HTML, CSS, Bootstrap
 - Database: SQLite
 - Version Control: Git + GitHub
+
+## 📸 Screenshots
+
+### Home Page
+![Image](https://github.com/user-attachments/assets/28deee2b-4922-45ac-81ff-e1717b7c4b9b)
+
+---
+
+### Tweet Input and Result Page
+![Image](https://github.com/user-attachments/assets/2c2de3fa-a008-4ae1-86d1-8c06b9f16f6c)
+
+---
+
+### Complaint_output
+![Image](https://github.com/user-attachments/assets/500c3fa8-9ad1-4e7e-aadd-4934e44f074d)
+
+---
+
+### Suggestion_output
+![Image](https://github.com/user-attachments/assets/a5d396d5-2e35-49e9-b072-7bc61bb8d1a6)
+
+---
+
+### General_output
+![Image](https://github.com/user-attachments/assets/c50bb709-4d36-4852-9a05-a99bde49a1ce)
+
+
+
