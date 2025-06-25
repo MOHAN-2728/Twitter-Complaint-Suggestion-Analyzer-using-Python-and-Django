@@ -31,7 +31,7 @@ A web-based Tweet Analyzer built with Django and Python that classifies tweets m
 ## 📸 Screenshots
 
 ### Home Page
-![Image](https://github.com/user-attachments/assets/28deee2b-4922-45ac-81ff-e1717b7c4b9b)
+![Image](output/Home page.png)
 
 ---
 
