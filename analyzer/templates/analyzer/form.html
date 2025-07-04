@@ -1,177 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tweet Analyzer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>Tweet Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at top left, #7b4397, #dc2430);
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-        }
+    body {
+      background: radial-gradient(circle at top left, #7b4397, #dc2430); /* 🔄 Previous gradient */
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+      color: #333;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 60px auto;
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            align-items: stretch;
-            flex-wrap: wrap;
-        }
+    .container {
+      display: flex;
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        .box {
-            flex: 1 1 500px;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            min-width: 450px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .box {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 450px;
+      min-height: 420px;
+    }
 
-        h1, h2 {
-            font-weight: 600;
-            color: #dc2430;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+    h1, h2 {
+      text-align: center;
+      color: #dc2430;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        textarea, input {
-            padding: 14px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 12px;
-            resize: vertical;
-        }
+    textarea {
+      padding: 12px;
+      font-size: 15px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      resize: vertical;
+      height: 100px;
+    }
 
-        button {
-            background: #dc2430;
-            color: white;
-            font-weight: 600;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 30px; /* ⬇️ Push buttons downward */
+    }
 
-        button:hover {
-            background: #a71d2a;
-        }
+    button, .history-button {
+      background-color: #dc2430;
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      flex: 1;
+      transition: 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
 
-        .result-box {
-            margin-top: 20px;
-            padding: 16px;
-            border-radius: 12px;
-            background: #f1f1f1;
-            text-align: left;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    button:hover, .history-button:hover {
+      background-color: #a71d2a;
+    }
 
-        .result-type {
-            font-size: 20px;
-            font-weight: 600;
-            color: #dc2430;
-        }
+    .result-box p {
+      margin: 12px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
-        .category {
-            font-size: 18px;
-            color: #444;
-            margin-top: 8px;
-        }
+    .result-box p strong {
+      color: #dc2430;
+    }
 
-        ul {
-            padding: 0;
-            list-style: none;
-        }
+    @media screen and (max-width: 1080px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
 
-        li {
-            margin-bottom: 12px;
-        }
-
-        .download-button {
-            background: #0d47a1;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .download-button:hover {
-            background: #1565c0;
-        }
-    </style>
+      .box {
+        width: 90%;
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="box">
-            <div>
-                <h1>Tweet Analyzer</h1>
+<div class="container">
+  <!-- Left: Form -->
+  <div class="box">
+    <h1>Tweet Analyzer</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="btn-group">
+        <button type="submit">Analyze Tweet</button>
+        <a href="{% url 'history' %}" class="history-button">Analysis History</a>
+      </div>
+    </form>
+  </div>
 
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Analyze Tweet</button>
-                </form>
-
-                {% if result_type %}
-                    <div class="result-box">
-                        <div class="result-type">Type: {{ result_type }}</div>
-                        {% if category %}
-                            <div class="category">Category: {{ category }}</div>
-                        {% endif %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="box">
-            <div>
-                <h2>Analysis History</h2>
-
-                {% if recent_results %}
-                    <div>
-                        <ul>
-                            {% for item in recent_results %}
-                                <li>
-                                    <strong>{{ item.result_type }}</strong> -
-                                    {{ item.category|default:"None" }} -
-                                    "{{ item.tweet_text|truncatechars:50 }}"
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% else %}
-                    <p>No analysis history yet.</p>
-                {% endif %}
-            </div>
-
-            <div style="text-align:center;">
-                <a href="{% url 'download_csv' %}" class="download-button">Download CSV</a>
-            </div>
-        </div>
-    </div>
+  <!-- Right: Analysis Result -->
+  {% if result_type %}
+  <div class="box result-box">
+    <h2>Analysis Result</h2>
+    <p><strong>Tweet Language:</strong> {{ language }}</p>
+    <p><strong>Type of Tweet:</strong> {{ result_type }}</p>
+    {% if category %}
+      <p><strong>Category:</strong> {{ category }}</p>
+    {% endif %}
+    {% if explanation %}
+      <p><strong>Explanation:</strong> {{ explanation }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
 
 </body>
 </html>

@@ -1,43 +1,25 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .forms import TweetForm
 from .models import AnalysisResult
-from django.http import HttpResponse
+from .utils import classify_tweet_ai
 import csv
 
-
-COMPLAINT_KEYWORDS = ['bad', 'worst', 'problem', 'issue', 'not working', 'dirty', 'garbage', 'leak', 'pothole']
-SUGGESTION_KEYWORDS = ['should', 'suggest', 'recommend', 'better if', 'could be better']
-COMPLAINT_CATEGORIES = {
-    'garbage': ['garbage', 'dirty', 'waste'],
-    'road': ['road', 'pothole', 'traffic'],
-    'water': ['water', 'leak', 'supply']
-}
-
-def classify_tweet(tweet):
-    tweet = tweet.lower()
-    if any(word in tweet for word in COMPLAINT_KEYWORDS):
-        category = 'general'
-        for key, keywords in COMPLAINT_CATEGORIES.items():
-            if any(word in tweet for word in keywords):
-                category = key
-                break
-        return 'Complaint', category
-    elif any(word in tweet for word in SUGGESTION_KEYWORDS):
-        return 'Suggestion', None
-    return 'General', None
-
 def analyze_tweet(request):
-    result_type, category = None, None
+    result_type = category = language = explanation = None
+
     if request.method == 'POST':
         form = TweetForm(request.POST)
         if form.is_valid():
             tweet = form.cleaned_data['tweet']
-            result_type, category = classify_tweet(tweet)
+            language, result_type, category, explanation = classify_tweet_ai(tweet)
 
             AnalysisResult.objects.create(
                 tweet_text=tweet,
+                language=language,
                 result_type=result_type,
-                category=category
+                category=category,
+                explanation=explanation
             )
     else:
         form = TweetForm()
@@ -48,19 +30,26 @@ def analyze_tweet(request):
         'form': form,
         'result_type': result_type,
         'category': category,
+        'language': language,
+        'explanation': explanation,
         'recent_results': recent_results
     })
+
+def history_view(request):
+    history = AnalysisResult.objects.order_by('-analyzed_at')[:20]
+    return render(request, 'analyzer/history.html', {'history': history})
 
 def download_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="analysis_results.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Tweet', 'Result Type', 'Category', 'Analyzed At'])
+    writer.writerow(['Tweet', 'Language', 'Result Type', 'Category', 'Explanation', 'Analyzed At'])
 
-    results = AnalysisResult.objects.all()
-
-    for result in results:
-        writer.writerow([result.tweet_text, result.result_type, result.category, result.analyzed_at])
+    for result in AnalysisResult.objects.all():
+        writer.writerow([
+            result.tweet_text, result.language, result.result_type,
+            result.category, result.explanation, result.analyzed_at
+        ])
 
     return response
