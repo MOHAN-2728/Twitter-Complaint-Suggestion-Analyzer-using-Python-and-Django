@@ -1,7 +1,7 @@
-🐦 Twitter Complaint & Suggestion Analyzer (Django)
+## 🐦 Twitter Complaint & Suggestion Analyzer (Django)
 A web-based Tweet Analyzer built with Django and Python that analyzes tweets mentioning @chennaicorp, classifies them as Complaints or Suggestions, detects the language (Tamil or English), and categorizes complaints into specific civic issues (e.g., garbage, road, water, etc.).
 
-✨ Features
+### ✨ Features
 🔍 Tweet Analysis
 Detects if a tweet is a Complaint, Suggestion, or General
 
