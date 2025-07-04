@@ -1,32 +1,71 @@
-# 🐦 Twitter Complaint & Suggestion Analyzer (Django)
-A web-based Tweet Analyzer built with Django and Python that classifies tweets mentioning @chennaicorp into Complaints or Suggestions, and further categorizes complaints (e.g., garbage, road, water issues, etc.).
-## ✨ Features
+🐦 Twitter Complaint & Suggestion Analyzer (Django)
+A web-based Tweet Analyzer built with Django and Python that analyzes tweets mentioning @chennaicorp, classifies them as Complaints or Suggestions, detects the language (Tamil or English), and categorizes complaints into specific civic issues (e.g., garbage, road, water, etc.).
 
-## 🔍 Tweet Analysis
-- Detect whether a tweet is a Complaint or Suggestion.
-- Categorize complaints into:
-  - 🚮 Garbage
-  - 🚧 Road
-  - 🚰 Water
-  - ⚙️ General
+✨ Features
+🔍 Tweet Analysis
+Detects if a tweet is a Complaint, Suggestion, or General
 
-## 👥 User Interface
-- Clean and responsive UI to input tweets.
+Auto-detects language (Tamil or English)
 
-- Shows analysis results instantly.
+Classifies complaints into categories:
 
-- Displays recent analyzed tweets and their classifications.
+🚮 Garbage
 
-## 📦 Optional Enhancements
-- Stores analysis history in the database.
-- Users can view recent complaint history
-- Download CSV of all analysis for admin review..
+🚧 Road
 
-## 🛠 Tech Stack
-- Backend: Django (Python)
-- Frontend: HTML, CSS, Bootstrap
-- Database: SQLite
-- Version Control: Git + GitHub
+🚰 Water
+
+💡 Electricity
+
+🔊 Noise
+
+🐕 Stray Animals
+
+🧼 Public Toilet
+
+⚙️ General
+
+💡 Explanation Logic
+Each tweet gets a smart explanation
+
+Explanation changes based on keywords and context
+
+Dynamic offline logic without external APIs
+
+🌐 Language Detection
+Supports both Tamil and English tweets using langdetect
+
+👥 User Interface
+✅ Clean and responsive UI
+
+✅ Tweet input with analyze and history buttons
+
+✅ Result shows:
+
+Tweet Language
+
+Type of Tweet
+
+Category
+
+Explanation
+
+✅ Layout: Side-by-side boxes for form and result
+
+📜 Analysis History
+Stores each tweet analysis in SQLite DB
+
+History page shows last analyzed tweets
+
+Includes option to download all results as CSV
+
+🛠 Tech Stack
+Layer	Tech Used
+Backend	Django (Python)
+Frontend	HTML, CSS (Poppins Font), Flexbox
+Language Detection	langdetect (Python)
+Database	SQLite
+Version Control	Git + GitHub
 
 ## 📸 Screenshots
 
