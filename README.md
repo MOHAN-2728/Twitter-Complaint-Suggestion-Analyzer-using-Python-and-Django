@@ -42,13 +42,13 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 
 ✅ Result shows:
 
-   Tweet Language
+   * Tweet Language
 
-   Type of Tweet
+   * Type of Tweet
 
-   Category
+   * Category
 
-   Explanation
+   * Explanation
 
 
 📜 Analysis History
@@ -59,12 +59,12 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 * Includes option to download all results as CSV
 
 🛠 Tech Stack
-Layer	Tech Used
-Backend	Django (Python)
-Frontend	HTML, CSS (Poppins Font), Flexbox
-Language Detection	langdetect (Python)
-Database	SQLite
-Version Control	Git + GitHub
+Layer	              Tech Used
+Backend	           Django (Python)
+Frontend	           HTML, CSS (Poppins Font), Flexbox
+Language Detection  langdetect (Python)
+Database	           SQLite
+Version Control	  Git + GitHub
 
 ## 📸 Screenshots
 
