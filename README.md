@@ -78,7 +78,7 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 ---
 
 ### Input Page
-![Image](output/Input_Page.png)
+![Image](output/Input_page.png)
 
 ---
 
