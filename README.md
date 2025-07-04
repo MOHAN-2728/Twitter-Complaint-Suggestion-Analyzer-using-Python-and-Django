@@ -3,37 +3,37 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 
 ### ✨ Features
 🔍 Tweet Analysis
-Detects if a tweet is a Complaint, Suggestion, or General
+* Detects if a tweet is a Complaint, Suggestion, or General
 
-Auto-detects language (Tamil or English)
+* Auto-detects language (Tamil or English)
 
-Classifies complaints into categories:
+* Classifies complaints into categories:
 
-🚮 Garbage
+   🚮 Garbage
 
-🚧 Road
+   🚧 Road
 
-🚰 Water
+   🚰 Water
 
-💡 Electricity
+   💡 Electricity
 
-🔊 Noise
+   🔊 Noise
 
-🐕 Stray Animals
+   🐕 Stray Animals
 
-🧼 Public Toilet
+   🧼 Public Toilet
 
-⚙️ General
+   ⚙️ General
 
-💡 Explanation Logic
-Each tweet gets a smart explanation
+   💡 Explanation Logic
+  
+* Each tweet gets a smart explanation
 
-Explanation changes based on keywords and context
+* Explanation changes based on keywords and context
 
-Dynamic offline logic without external APIs
 
 🌐 Language Detection
-Supports both Tamil and English tweets using langdetect
+* Supports both Tamil and English tweets using langdetect
 
 👥 User Interface
 ✅ Clean and responsive UI
@@ -42,22 +42,21 @@ Supports both Tamil and English tweets using langdetect
 
 ✅ Result shows:
 
-Tweet Language
+   Tweet Language
 
-Type of Tweet
+   Type of Tweet
 
-Category
+   Category
 
-Explanation
+   Explanation
 
-✅ Layout: Side-by-side boxes for form and result
 
 📜 Analysis History
-Stores each tweet analysis in SQLite DB
+* Stores each tweet analysis in SQLite DB
 
-History page shows last analyzed tweets
+* History page shows last analyzed tweets
 
-Includes option to download all results as CSV
+* Includes option to download all results as CSV
 
 🛠 Tech Stack
 Layer	Tech Used
