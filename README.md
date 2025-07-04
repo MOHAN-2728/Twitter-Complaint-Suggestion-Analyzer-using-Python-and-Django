@@ -73,27 +73,32 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 ## 📸 Screenshots
 
 ### Home Page
-![Image](output/Home_page.png)
+![Image](output/Home_screen.png)
 
 ---
 
-### Tweet Input and Result Page
-![Image](output/input_page.png)
+### Input Page
+![Image](output/Input_Page.png)
 
 ---
 
-### Complaint_output
-![Image](output/complaint_output.png)
+### Tamil Input
+![Image](output/Tamil_input.png)
 
 ---
 
-### Suggestion_output
-![Image](output/suggestion_output.png)
+### English Input
+![Image](output/English_input.png)
 
 ---
 
-### General_output
-![Image](output/general_output.png)
+### History Analysis
+![Image](output/Analysis_history.png)
+
+---
+
+### Download Results
+![Image](output/download_results.png)
 
 
 
