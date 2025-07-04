@@ -36,6 +36,7 @@ A web-based Tweet Analyzer built with Django and Python that analyzes tweets men
 * Supports both Tamil and English tweets using langdetect
 
 👥 User Interface
+
 ✅ Clean and responsive UI
 
 ✅ Tweet input with analyze and history buttons
